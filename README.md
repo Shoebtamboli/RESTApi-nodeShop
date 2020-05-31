@@ -3,11 +3,21 @@
     mongoose (MongoDb Atlas)
 
 ### Our nodeRest Shop API
-    /products
-    /orders
+    Products:
+    GET         /products
+                /products/:productId
+    POST        /products
+    PATCH       /products/:productId
+    DELETE      /:productId
+        
+    Orders:
+    GET         /orders
+                /orders/:orderId
+    POST        /orders
+    DELETE      /:orderId
+
+### How to run
+    npm install
+    npm start
     
-
-
-what is CORS?
-
-cross origin resource sharing
+    it will run on http://localhost:3000
