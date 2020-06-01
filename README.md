@@ -3,8 +3,8 @@
     mongoose (MongoDb Atlas)
 
 ### Our nodeRest Shop API
-Product API
 
+| Product API  | |
 | ------------- | ------------- |
 | GET           |   /products  |
 |               |   /products/:productId  |
@@ -12,8 +12,8 @@ Product API
 | PATCH         |   /products/:productId    |
 | DELETE        |   /:productId |
 
-Order API
 
+| Order API  |  |
 | ------------- | ------------- |
 | GET           |   /orders     |
 |               |   /orders/:orderId  |
