@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
-
 const Order = require('../models/order');
 const Product = require('../models/product');
 
-const orders_get_all = (req, res, next) => {
+const getOrders = (req, res, next) => {
 	Order.find()
 		.select('product quantity _id')
 		.populate('product', 'name')
@@ -31,7 +30,7 @@ const orders_get_all = (req, res, next) => {
 		});
 };
 
-const orders_create_order = (req, res, next) => {
+const createOrder = (req, res, next) => {
 	Product.findById(req.body.productId)
 		.then((product) => {
 			if (!product) {
@@ -69,7 +68,7 @@ const orders_create_order = (req, res, next) => {
 		});
 };
 
-const orders_get_order = (req, res, next) => {
+const getOrderById = (req, res, next) => {
 	Order.findById(req.params.orderId)
 		.populate('product')
 		.exec()
@@ -94,7 +93,7 @@ const orders_get_order = (req, res, next) => {
 		});
 };
 
-const orders_delete_order = (req, res, next) => {
+const deleteOrder = (req, res, next) => {
 	Order.remove({ _id: req.params.orderId })
 		.exec()
 		.then((result) => {
@@ -115,8 +114,8 @@ const orders_delete_order = (req, res, next) => {
 };
 
 module.exports = {
-	orders_get_all,
-	orders_create_order,
-	orders_get_order,
-	orders_delete_order
+	getOrders,
+	createOrder,
+	getOrderById,
+	deleteOrder
 };

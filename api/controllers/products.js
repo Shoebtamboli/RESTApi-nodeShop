@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Product = require('../models/product');
 
-const products_get_all = (req, res, next) => {
+const getProducts = (req, res, next) => {
 	Product.find()
 		.select('name price _id productImage')
 		.exec()
@@ -37,7 +37,7 @@ const products_get_all = (req, res, next) => {
 		});
 };
 
-const products_create_product = (req, res, next) => {
+const createProduct = (req, res, next) => {
 	const product = new Product({
 		_id: new mongoose.Types.ObjectId(),
 		name: req.body.name,
@@ -69,7 +69,7 @@ const products_create_product = (req, res, next) => {
 		});
 };
 
-const products_get_product = (req, res, next) => {
+const getProductById = (req, res, next) => {
 	const id = req.params.productId;
 	Product.findById(id)
 		.select('name price _id productImage')
@@ -94,7 +94,7 @@ const products_get_product = (req, res, next) => {
 		});
 };
 
-const products_update_product = (req, res, next) => {
+const updateProduct = (req, res, next) => {
 	const id = req.params.productId;
 	const updateOps = {};
 	for (const ops of req.body) {
@@ -119,7 +119,7 @@ const products_update_product = (req, res, next) => {
 		});
 };
 
-const products_delete = (req, res, next) => {
+const deleteProduct = (req, res, next) => {
 	const id = req.params.productId;
 	Product.remove({ _id: id })
 		.exec()
@@ -142,9 +142,9 @@ const products_delete = (req, res, next) => {
 };
 
 module.exports = {
-	products_get_all,
-	products_create_product,
-	products_get_product,
-	products_update_product,
-	products_delete
+	getProducts,
+	createProduct,
+	getProductById,
+	updateProduct,
+	deleteProduct
 };
